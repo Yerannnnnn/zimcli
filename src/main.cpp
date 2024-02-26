@@ -43,12 +43,14 @@ int main(int argc, char **argv)
 	std::cout << "ZIM version: " << zim::ZIM::getVersion() << std::endl;
 
 	// create zim
+	std::cout << "Create ZIM..." << std::endl;
 	zim::ZIMAppConfig app_config;
 	app_config.appID = appid;
 	app_config.appSign = appsign;
 	zim_ = zim::ZIM::create(app_config);
 
 	// login
+	std::cout << "Login ZIM..." << std::endl;
 	zim::ZIMUserInfo userInfo;
 	userInfo.userID = sender;
 	userInfo.userName = sender;
