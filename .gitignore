@@ -1,0 +1,4 @@
+# Exclude macOS legacy resource forks
+**/.DS_Store
+build
+.vscode
