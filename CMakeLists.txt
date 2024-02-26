@@ -32,7 +32,6 @@ add_executable(${PROJECT_NAME} ${All_SOURCES})
 
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_LIST_DIR}/src)
-target_compile_options(${PROJECT_NAME} PRIVATE -Wundefined-bool-conversion)
 add_compile_options(-Wno-unused-variable)
 add_definitions(-Wno-unused-parameter)
 add_definitions(-Wno-shorten-64-to-32)
