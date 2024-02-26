@@ -59,20 +59,21 @@ if(APPLE)
   target_compile_options(${PROJECT_NAME} PRIVATE $<$<C_COMPILER_ID:Clang,AppleClang>:-Wno-quoted-include-in-framework-header -Wno-comma>)
 ####################################################
 else()
-  target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_LIST_DIR}/lib/zim/linux/include)
-  link_directories(${CMAKE_CURRENT_LIST_DIR}/lib/zim/linux/aarch64)
-  find_library(
-    VarZegoZIM
-        ZIM
-        ${CMAKE_CURRENT_LIST_DIR}/lib/zim/linux/aarch64
-    NO_DEFAULT_PATH
-    )
-  target_link_libraries(${PROJECT_NAME} ${VarZegoZIM})
-  message("**find_library zim : ${VarZegoZIM}")
-  message("**link ${PROJECT_NAME} ${VarZegoZIM}")
+  target_include_directories(${PROJECT_NAME} PRIVATE 
+    ${CMAKE_CURRENT_LIST_DIR}/lib/zim/linux/include
+  )  
+  target_link_directories(${PROJECT_NAME} PRIVATE 
+    ${CMAKE_CURRENT_LIST_DIR}/lib/zim/linux/x86_64
+  )
+  # find_library(
+  #   VarZegoZIM
+  #       ZIM
+  #       ${CMAKE_CURRENT_LIST_DIR}/lib/zim/linux/x86_64
+  #   NO_DEFAULT_PATH
+  # )
+  # message("**find_library zim : ${VarZegoZIM}")
+  target_link_libraries(${PROJECT_NAME} libZIM.so)
 endif()
-
-
 
 
 ####################################################

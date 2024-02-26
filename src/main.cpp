@@ -14,24 +14,32 @@ std::string appsign;
 std::string sender;
 std::string receiver;
 int qps = 1;
+int execution_time = 300; //default is 300s
+bool stopFlag = false;
 
 int main(int argc, char **argv)
 {
-
 	std::cout << "Running..." << std::endl;
 
 	CLI::App app("zimcli");
 	app.add_option("--appid", appid, "appid");
 	app.add_option("--appsign", appsign, "appsign");
-	app.add_option("--sender", sender, "sender");
-	app.add_option("--receiver", receiver, "receiver");
-	app.add_option("--qps", qps, "qps");
+	app.add_option("--sender", sender, "sender's userID");
+	app.add_option("--receiver", receiver, "receiver's userID");
+	app.add_option("--qps", qps, "qps, max is 10")->default_val(1);
+	app.add_option("--execution-time", execution_time, "The execution time of this command line programs.")
+		->default_val(300);
 	CLI11_PARSE(app, argc, argv);
+
+	if (qps > 10) {
+		qps = 10;
+	}
 
 	std::cout << "appid: " << appid << std::endl;
 	std::cout << "appsign: " << appsign << std::endl;
 	std::cout << "sender: " << sender << std::endl;
 	std::cout << "receiver: " << receiver << std::endl;
+	std::cout << "execution_time: " << execution_time << std::endl;
 	std::cout << "ZIM version: " << zim::ZIM::getVersion() << std::endl;
 
 	// create zim
@@ -51,16 +59,19 @@ int main(int argc, char **argv)
 
 		thread_ = std::thread(loopMessage);
 	});
-	while (1) {
-	}
 
+	std::this_thread::sleep_for(std::chrono::seconds(execution_time));
+	stopFlag = true;
+	if (thread_.joinable()) {
+		thread_.join();
+	}
 	return 0;
 }
 
 void loopMessage()
 {
 	int ms = 1000 / qps;
-	while (1) {
+	while (!stopFlag) {
 
 		zim::ZIMMessageSendConfig sendConfig;
 
