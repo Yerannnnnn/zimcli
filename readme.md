@@ -47,11 +47,10 @@ Usage: ./zimcli [OPTIONS]
 
 Options:
   -h,--help                   Print this help message and exit
-  --appid INT                 appid
-  --appsign TEXT              appsign
   --sender TEXT               sender's userID
   --receiver TEXT             receiver's userID
   --qps INT [1]               qps, 1~10. Default is 1.
+  --debug INT [0]             debug or not. Default is 0.
   --execution-time INT [300]  The execution time of this command line programs. 0~900s. Default is 300s.
 ```
 
