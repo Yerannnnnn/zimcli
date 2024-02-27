@@ -79,7 +79,7 @@ int main(int argc, char **argv)
 
 void loopMessage()
 {
-	int ms = 1000 / qps;
+	int ms = 5 + 1000 / qps;
 	while (!stopFlag) {
 
 		zim::ZIMMessageSendConfig sendConfig;
