@@ -26,13 +26,17 @@ int main(int argc, char **argv)
 	app.add_option("--appsign", appsign, "appsign");
 	app.add_option("--sender", sender, "sender's userID");
 	app.add_option("--receiver", receiver, "receiver's userID");
-	app.add_option("--qps", qps, "qps, max is 10")->default_val(1);
-	app.add_option("--execution-time", execution_time, "The execution time of this command line programs.")
+	app.add_option("--qps", qps, "qps, 1~10. Default is 1.")->default_val(1);
+	app.add_option("--execution-time", execution_time,
+		       "The execution time of this command line programs. 0~900s. Default is 300s.")
 		->default_val(300);
 	CLI11_PARSE(app, argc, argv);
 
 	if (qps > 10) {
 		qps = 10;
+	}
+	if (execution_time > 900) {
+		execution_time = 900;
 	}
 
 	std::cout << "appid: " << appid << std::endl;
