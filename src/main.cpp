@@ -46,6 +46,11 @@ int main(int argc, char **argv)
 	std::cout << "execution_time: " << execution_time << std::endl;
 	std::cout << "ZIM version: " << zim::ZIM::getVersion() << std::endl;
 
+	if (appid == 0 || appsign.empty() || sender.empty() || receiver.empty()) {
+		std::cout << "appid, appsign, sender, receiver are required." << std::endl;
+		return 1;
+	}
+
 	// create zim
 	std::cout << "Create ZIM..." << std::endl;
 	zim::ZIMAppConfig app_config;
