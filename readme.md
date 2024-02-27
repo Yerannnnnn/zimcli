@@ -1,6 +1,7 @@
 # 安装 Cmake
 
 ## cmake版本检查
+
 1. 在 linux 环境下执行`cmake --version`，如果没有 cmake，或者cmake版本低于 3.15，则需要先安装下 cmake
 2. 执行yum info cmake，看下 yum 的 cmake 版本，如果版本大于3.15，可以直接`yum install cmake`
 3. yum 上的 cmake 版本太旧的话， 按下面的步骤安装 cmake
@@ -14,7 +15,9 @@ cd cmake-3.17.0-rc3
 gmake
 gmake install
 ```
+
 # gcc环境检查
+
 执行`gcc -v`，如果命令不存在，则需要执行`yum install gcc`
 
 # 构建命令行工具
@@ -31,6 +34,7 @@ make
 ```
 
 # 用法示例
+
 ```bash
 Usage: ./zimcli [OPTIONS]
 
