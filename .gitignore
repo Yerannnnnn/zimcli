@@ -4,7 +4,6 @@ build
 .vscode
 run.sh
 log
-*.so
 *.dll
 *.dylib
 *.lib
