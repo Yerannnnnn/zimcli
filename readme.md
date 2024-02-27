@@ -20,6 +20,13 @@ gmake install
 
 执行`gcc -v`，如果命令不存在，则需要执行`yum install gcc`
 
+# 填写 appid 和 appsign
+在 main.cpp 中填写 appid 和 appsign
+```cpp
+int appid = ;
+std::string appsign = ;
+```
+
 # 构建命令行工具
 
 下载本仓库后，进入根目录，按以下步骤执行编译
