@@ -42,7 +42,30 @@ make
 ./zimcli --help
 ```
 
-编译通过即可使用
+# 部署
+
+编译通过即可使用，仅需编译一次即可批量部署到类似的运行环境中，批量部署时将编译产物`zimcli`和`libZIM.so`库文档放到目标机器上即可。
+
+```bash
+$ ls
+zimcli libZIM.so
+```
+
+如果遇到无法找到libZIM.so的问题，报错如下：
+```bash
+/zimcli: error while loading shared libraries: libZIM.so: canmnot open shared object file: No such file
+or directory
+```
+
+则需要在运行前导出链接地址
+
+```bash
+$ ls
+zimcli libZIM.so
+$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:`pwd`
+$ ./zimcli --help
+```
+
 
 # 用法示例
 
