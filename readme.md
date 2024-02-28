@@ -89,5 +89,5 @@ Options:
 完整参数示例:
 
 ```bash
-./zimcli --appid 111111111 --appsign ****** --sender test_sender_id --receiver test_receiver_id --qps 1 --execution-time 300
+./zimcli --sender test_sender_id --receiver test_receiver_id --qps 1 --execution-time 300
 ```
