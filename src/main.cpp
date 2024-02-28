@@ -58,15 +58,8 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	// create zim
-	std::cout << "Create ZIM..." << std::endl;
-	zim::ZIMAppConfig app_config;
-	app_config.appID = appid;
-	app_config.appSign = appsign;
-	zim_ = zim::ZIM::create(app_config);
-
+	// log path
 	zim::ZIMLogConfig log_config;
-
 	if (!logpath.empty()) {
 		log_config.logPath = "/root/ZIMLogs";
 	}
@@ -74,6 +67,14 @@ int main(int argc, char **argv)
 		log_config.logSize = logsize;
 	}
 	zim::ZIM::setLogConfig(log_config);
+
+	// create zim
+	std::cout << "Create ZIM..." << std::endl;
+	zim::ZIMAppConfig app_config;
+	app_config.appID = appid;
+	app_config.appSign = appsign;
+	zim_ = zim::ZIM::create(app_config);
+
 	// login
 	std::cout << "Login ZIM..." << std::endl;
 	zim::ZIMUserInfo userInfo;
