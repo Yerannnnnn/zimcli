@@ -61,7 +61,7 @@ int main(int argc, char **argv)
 	// log path
 	zim::ZIMLogConfig log_config;
 	if (!logpath.empty()) {
-		log_config.logPath = "/root/ZIMLogs";
+		log_config.logPath = logpath;
 	}
 	if (logsize != 0) {
 		log_config.logSize = logsize;
