@@ -45,11 +45,13 @@ int main(int argc, char **argv)
 	}
 
 	logpath = logpath + "/" + sender;
+	std::string cachePath = "/root/ZIMCaches/" + sender;
 
 	std::cout << "sender: " << sender << std::endl;
 	std::cout << "receiver: " << receiver << std::endl;
 	std::cout << "execution_time: " << execution_time << std::endl;
 	std::cout << "logpath: " << logpath << std::endl;
+	std::cout << "cachepath: " << cachePath << std::endl;
 	std::cout << "logsize: " << logsize << std::endl;
 	std::cout << "ZIM version: " << zim::ZIM::getVersion() << std::endl;
 
@@ -67,6 +69,9 @@ int main(int argc, char **argv)
 		log_config.logSize = logsize;
 	}
 	zim::ZIM::setLogConfig(log_config);
+	zim::ZIMCacheConfig cache_config;
+	cache_config.cachePath = cachePath;
+	zim::ZIM::setCacheConfig(cache_config);
 
 	// create zim
 	std::cout << "Create ZIM..." << std::endl;
